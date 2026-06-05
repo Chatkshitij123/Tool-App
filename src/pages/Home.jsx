@@ -1,17 +1,44 @@
 import Hero from "../components/home/Hero";
+import RouteCalculator from "../components/home/RouteCalculator";
+import RouteResult from "../components/home/RouteResult";
+import PopularRoutes from "../components/home/PopularRoutes";
+
+import Loading from "../components/common/Loading";
+import ErrorCard from "../components/common/ErrorCard";
+
+import useRoute from "../hooks/useRoute";
 
 const Home = () => {
+  const {
+    result,
+    loading,
+    error,
+    calculateRoute,
+  } = useRoute();
+
   return (
     <>
       <Hero />
 
-      {/* RouteCalculator */}
+      <RouteCalculator
+        onCalculate={calculateRoute}
+      />
 
-      {/* RouteResult */}
+      {loading && (
+        <Loading />
+      )}
 
-      {/* PopularRoutes */}
+      {error && (
+        <ErrorCard
+          message={error}
+        />
+      )}
 
-      {/* AuthModal */}
+      <RouteResult
+        result={result}
+      />
+
+      <PopularRoutes />
     </>
   );
 };
