@@ -11,6 +11,7 @@ import ActivityLog from "../components/admin/ActivityLog";
 import PopularRoutesTable from "../components/admin/PopularRoutesTable";
 
 import DangerZone from "../components/admin/DangerZone";
+import "../styles/admin.css";
 
 const Admin = () => {
   const {

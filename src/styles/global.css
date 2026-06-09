@@ -1,0 +1,380 @@
+/* =========================
+   GLOBAL VARIABLES
+========================= */
+
+:root {
+  --primary: #5b4fcf;
+  --primary2: #7c3aed;
+  --accent: #f59e0b;
+
+  --bg: #f1f0fb;
+  --card: #ffffff;
+
+  --text: #1e1b4b;
+  --muted: #6b7280;
+
+  --border: #e2e0f5;
+
+  --success: #10b981;
+  --danger: #ef4444;
+
+  --radius: 18px;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   IMAGES
+========================= */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 1.2rem;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 2px 20px rgba(91, 79, 207, 0.08);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  padding: 0.7rem 1.2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary2)
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logo i {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: var(--muted);
+
+  font-weight: 600;
+
+  padding: 0.45rem 0.9rem;
+
+  border-radius: 10px;
+
+  font-size: 0.88rem;
+
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary2)
+  );
+
+  color: white;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 0.7rem 1.2rem;
+
+  cursor: pointer;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  font-family: inherit;
+
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary2)
+  );
+
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-danger {
+  background: #fef2f2;
+  color: var(--danger);
+  border: 1px solid #fca5a5;
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+  background: var(--card);
+
+  border-radius: var(--radius);
+
+  padding: 1.5rem;
+
+  border: 1px solid var(--border);
+
+  box-shadow: 0 4px 15px rgba(
+    91,
+    79,
+    207,
+    0.08
+  );
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.badge {
+  display: inline-block;
+
+  padding: 0.2rem 0.6rem;
+
+  border-radius: 20px;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.badge-green {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-purple {
+  background: #ede9fe;
+  color: var(--primary);
+}
+
+.badge-admin {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-user {
+  background: #ede9fe;
+  color: var(--primary);
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+  padding: 2.5rem 1.2rem;
+
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary2)
+  );
+}
+
+.page-header h1 {
+  font-size: clamp(
+    1.6rem,
+    4vw,
+    2.2rem
+  );
+
+  font-weight: 800;
+}
+
+.page-header p {
+  margin-top: 0.3rem;
+  opacity: 0.85;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  background: var(--text);
+
+  color: rgba(
+    255,
+    255,
+    255,
+    0.65
+  );
+
+  text-align: center;
+
+  padding: 1.5rem;
+
+  margin-top: 3rem;
+
+  font-size: 0.83rem;
+}
+
+footer a {
+  color: rgba(
+    255,
+    255,
+    255,
+    0.65
+  );
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .nav-container {
+    justify-content: center;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .page-header {
+    text-align: center;
+  }
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .nav-links a {
+    min-height: 44px;
+  }
+}

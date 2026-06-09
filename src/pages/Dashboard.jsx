@@ -1,6 +1,7 @@
 import DashboardStats from "../components/dashboard/DashboardStats";
 
 import TripHistory from "../components/dashboard/TripHistory";
+import "../styles/dashboard.css";
 
 import useTrips from "../hooks/useTrips";
 

@@ -4,33 +4,76 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { auth } from "../firebase/firebase";
+import {
+  doc,
+  setDoc,
+  getDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
-export const registerUser =
-  async (
-    email,
-    password
-  ) => {
-    return createUserWithEmailAndPassword(
+import { auth, db } from "../firebase/firebase";
+
+export const registerUser = async (
+  name,
+  email,
+  password
+) => {
+  const userCredential =
+    await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
-  };
 
-export const loginUser =
-  async (
+  const user =
+    userCredential.user;
+
+  await setDoc(
+    doc(db, "users", user.uid),
+    {
+      uid: user.uid,
+      name,
+      email,
+      role: "user",
+      createdAt:
+        serverTimestamp(),
+    }
+  );
+
+  return userCredential;
+};
+
+export const loginUser = async (
+  email,
+  password
+) => {
+  return signInWithEmailAndPassword(
+    auth,
     email,
     password
-  ) => {
-    return signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-  };
+  );
+};
 
-export const logoutUser =
-  async () => {
-    return signOut(auth);
+export const logoutUser = async () => {
+  return signOut(auth);
+};
+
+export const getUserProfile =
+  async (uid) => {
+    const docRef = doc(
+      db,
+      "users",
+      uid
+    );
+
+    const docSnap =
+      await getDoc(docRef);
+
+    if (
+      docSnap.exists()
+    ) {
+      return docSnap.data();
+    }
+
+    return null;
   };

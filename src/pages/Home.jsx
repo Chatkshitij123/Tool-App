@@ -5,6 +5,7 @@ import PopularRoutes from "../components/home/PopularRoutes";
 
 import Loading from "../components/common/Loading";
 import ErrorCard from "../components/common/ErrorCard";
+import "../styles/home.css";
 
 import useRoute from "../hooks/useRoute";
 

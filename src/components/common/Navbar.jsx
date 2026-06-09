@@ -1,39 +1,90 @@
-import { Link } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
+import {
+  Link,
+} from "react-router-dom";
+
+import {
+  useAuth,
+} from "../../hooks/useAuth";
+
+import {
+  logoutUser,
+} from "../../services/authService";
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const {
+    firebaseUser,
+    role,
+  } = useAuth();
+
+  const handleLogout =
+    async () => {
+      await logoutUser();
+    };
 
   return (
     <nav className="navbar">
       <div className="nav-container">
+
         <div className="logo">
-          <i className="fas fa-road icon"></i>
+          <i className="fas fa-road"></i>
+
           <span>
-            Toll<span style={{ color: "var(--accent)" }}>Guru</span>
+            Toll
+            <span
+              style={{
+                color:
+                  "var(--accent)",
+              }}
+            >
+              Guru
+            </span>
           </span>
         </div>
 
         <div className="nav-links">
-          <Link to="/">Home</Link>
 
-          {user && <Link to="/dashboard">Dashboard</Link>}
+          <Link to="/">
+            Home
+          </Link>
 
-          {user?.role === "admin" && (
-            <Link to="/admin">Admin</Link>
+          {!firebaseUser && (
+            <>
+              <Link to="/login">
+                Login
+              </Link>
+
+              <Link to="/register">
+                Register
+              </Link>
+            </>
           )}
 
-          {!user ? (
-            <Link to="/login">Login</Link>
-          ) : (
-            <button
-              className="logout-btn"
-              onClick={logout}
-            >
-              Logout
-            </button>
+          {firebaseUser && (
+            <>
+              <Link to="/dashboard">
+                Dashboard
+              </Link>
+
+              {role ===
+                "admin" && (
+                <Link to="/admin">
+                  Admin
+                </Link>
+              )}
+
+              <button
+                className="btn btn-primary"
+                onClick={
+                  handleLogout
+                }
+              >
+                Logout
+              </button>
+            </>
           )}
+
         </div>
+
       </div>
     </nav>
   );

@@ -1,93 +1,98 @@
-import {
-  useState,
-} from "react";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
-import {
-  useNavigate,
-} from "react-router-dom";
+import { loginUser } from "../services/authService";
 
-import {
-  loginUser,
-} from "../services/authService";
+import "../styles/auth.css";
 
 const Login = () => {
-  const navigate =
-    useNavigate();
+  const navigate = useNavigate();
 
-  const [
-    email,
-    setEmail,
-  ] = useState("");
+  const [email, setEmail] =
+    useState("");
 
-  const [
-    password,
-    setPassword,
-  ] = useState("");
+  const [password, setPassword] =
+    useState("");
 
-  const handleSubmit =
-    async (e) => {
-      e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      try {
-        await loginUser(
-          email,
-          password
-        );
+    try {
+      await loginUser(
+        email,
+        password
+      );
 
-        navigate(
-          "/dashboard"
-        );
-      } catch (
-        error
-      ) {
-        alert(
-          error.message
-        );
-      }
-    };
+      navigate(
+        "/dashboard"
+      );
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <div className="auth-page">
+      <div className="auth-card">
 
-      <form
-        className="auth-form"
-        onSubmit={
-          handleSubmit
-        }
-      >
-        <h2>
-          Login
-        </h2>
+        <div className="auth-header">
+          <h1>Login</h1>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) =>
-            setEmail(
-              e.target.value
-            )
-          }
-        />
+          <p>
+            Welcome back to
+            TollGuru
+          </p>
+        </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) =>
-            setPassword(
-              e.target.value
-            )
-          }
-        />
-
-        <button
-          type="submit"
+        <form
+          className="auth-form"
+          onSubmit={handleSubmit}
         >
-          Login
-        </button>
-      </form>
+          <input
+            className="auth-input"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) =>
+              setEmail(
+                e.target.value
+              )
+            }
+            required
+          />
 
+          <input
+            className="auth-input"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) =>
+              setPassword(
+                e.target.value
+              )
+            }
+            required
+          />
+
+          <button
+            className="auth-btn"
+            type="submit"
+          >
+            Login
+          </button>
+        </form>
+
+        <div className="auth-footer">
+          Don't have an account?{" "}
+          <Link
+            className="auth-link"
+            to="/register"
+          >
+            Register
+          </Link>
+        </div>
+
+      </div>
     </div>
   );
 };

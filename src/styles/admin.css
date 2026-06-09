@@ -1,0 +1,376 @@
+/* =========================
+   ADMIN PAGE HEADER
+========================= */
+
+.page-header.admin-header {
+  background: linear-gradient(
+    135deg,
+    #1e1b4b,
+    #312e81
+  );
+
+  color: white;
+
+  padding: 2.5rem 1.2rem;
+}
+
+.page-header.admin-header h1 {
+  font-size: clamp(
+    1.6rem,
+    4vw,
+    2rem
+  );
+
+  font-weight: 800;
+}
+
+.page-header.admin-header p {
+  margin-top: 0.3rem;
+
+  opacity: 0.75;
+
+  font-size: 0.9rem;
+}
+
+/* =========================
+   ADMIN BADGE
+========================= */
+
+.admin-badge {
+  display: inline-block;
+
+  background: #f59e0b;
+
+  color: #1c1917;
+
+  padding: 0.2rem 0.7rem;
+
+  border-radius: 20px;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  margin-left: 0.5rem;
+
+  vertical-align: middle;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(155px, 1fr));
+
+  gap: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: var(--card);
+
+  border-radius: var(--radius);
+
+  padding: 1.2rem 1rem;
+
+  text-align: center;
+
+  border: 1px solid var(--border);
+
+  box-shadow: 0 4px 15px rgba(
+    91,
+    79,
+    207,
+    0.08
+  );
+
+  transition: 0.25s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-card .icon {
+  font-size: 1.6rem;
+
+  margin-bottom: 0.4rem;
+
+  color: var(--primary);
+}
+
+.stat-card .val {
+  font-size: 1.8rem;
+
+  font-weight: 800;
+
+  color: var(--primary);
+}
+
+.stat-card .lbl {
+  font-size: 0.77rem;
+
+  color: var(--muted);
+
+  margin-top: 0.1rem;
+}
+
+/* =========================
+   TWO COLUMN GRID
+========================= */
+
+.grid2 {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(340px, 1fr));
+
+  gap: 1.2rem;
+
+  margin-bottom: 1.5rem;
+}
+
+/* =========================
+   CARD TITLE
+========================= */
+
+.card-title {
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  margin-bottom: 1rem;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+}
+
+/* =========================
+   USERS LIST
+========================= */
+
+.user-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+  padding: 0.8rem 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.user-item:last-child {
+  border-bottom: none;
+}
+
+.user-email {
+  font-size: 0.92rem;
+
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.user-meta {
+  font-size: 0.78rem;
+
+  color: var(--muted);
+
+  margin-top: 0.2rem;
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.badge-admin {
+  background: #fef3c7;
+
+  color: #92400e;
+}
+
+.badge-user {
+  background: #ede9fe;
+
+  color: var(--primary);
+}
+
+.badge-green {
+  background: #d1fae5;
+
+  color: #065f46;
+}
+
+/* =========================
+   ROUTE TABLE
+========================= */
+
+.route-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 0.7rem 0;
+
+  border-bottom: 1px solid var(--border);
+
+  font-size: 0.88rem;
+}
+
+.route-row:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   ACTIVITY LOG
+========================= */
+
+.activity-log {
+  max-height: 280px;
+
+  overflow-y: auto;
+}
+
+.log-item {
+  display: flex;
+
+  gap: 0.7rem;
+
+  align-items: flex-start;
+
+  padding: 0.6rem 0;
+
+  border-bottom: 1px solid var(--border);
+
+  font-size: 0.83rem;
+}
+
+.log-item:last-child {
+  border-bottom: none;
+}
+
+.log-dot {
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  margin-top: 0.3rem;
+
+  flex-shrink: 0;
+}
+
+.log-time {
+  color: var(--muted);
+
+  white-space: nowrap;
+
+  font-size: 0.75rem;
+}
+
+/* =========================
+   DANGER ZONE
+========================= */
+
+.danger-zone {
+  border: 1.5px solid #fca5a5;
+}
+
+.danger-zone .card-title {
+  color: var(--danger);
+}
+
+.btn-danger {
+  background: #fef2f2;
+
+  color: var(--danger);
+
+  border: 1px solid #fca5a5;
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+
+  color: white;
+}
+
+/* =========================
+   ACCESS DENIED
+========================= */
+
+.access-denied {
+  text-align: center;
+
+  padding: 4rem 1rem;
+}
+
+.access-denied i {
+  display: block;
+
+  font-size: 3rem;
+
+  color: var(--danger);
+
+  margin-bottom: 1rem;
+}
+
+.access-denied h2 {
+  margin-bottom: 0.5rem;
+}
+
+.access-denied p {
+  color: var(--muted);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .user-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .route-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+}

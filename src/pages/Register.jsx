@@ -1,54 +1,105 @@
-import {
-  useState,
-} from "react";
+import { useState } from "react";
 
 import {
   useNavigate,
+  Link,
 } from "react-router-dom";
 
 import {
   registerUser,
 } from "../services/authService";
 
-const Register =
-  () => {
-    const navigate =
-      useNavigate();
+import "../styles/auth.css";
 
-    const [
-      email,
-      setEmail,
-    ] = useState("");
+const Register = () => {
+  const navigate =
+    useNavigate();
 
-    const [
-      password,
-      setPassword,
-    ] = useState("");
+  const [name, setName] =
+    useState("");
 
-    const handleSubmit =
-      async (e) => {
-        e.preventDefault();
+  const [email, setEmail] =
+    useState("");
 
-        try {
-          await registerUser(
-            email,
-            password
-          );
+  const [
+    password,
+    setPassword,
+  ] = useState("");
 
-          navigate(
-            "/dashboard"
-          );
-        } catch (
+  const [
+    confirmPassword,
+    setConfirmPassword,
+  ] = useState("");
+
+  const handleSubmit =
+    async (e) => {
+      e.preventDefault();
+
+      if (
+        name.trim().length < 3
+      ) {
+        alert(
+          "Name must be at least 3 characters"
+        );
+
+        return;
+      }
+
+      if (
+        password.length < 6
+      ) {
+        alert(
+          "Password must be at least 6 characters"
+        );
+
+        return;
+      }
+
+      if (
+        password !==
+        confirmPassword
+      ) {
+        alert(
+          "Passwords do not match"
+        );
+
+        return;
+      }
+
+      try {
+        await registerUser(
+          name,
+          email,
+          password
+        );
+
+        navigate(
+          "/dashboard"
+        );
+      } catch (error) {
+        console.error(
           error
-        ) {
-          alert(
-            error.message
-          );
-        }
-      };
+        );
 
-    return (
-      <div className="auth-page">
+        alert(
+          error.message
+        );
+      }
+    };
+
+  return (
+    <div className="auth-page">
+      <div className="auth-card">
+
+        <div className="auth-header">
+          <h1>
+            Register
+          </h1>
+
+          <p>
+            Create your TollGuru account
+          </p>
+        </div>
 
         <form
           className="auth-form"
@@ -56,37 +107,63 @@ const Register =
             handleSubmit
           }
         >
-          <h2>
-            Register
-          </h2>
 
           <input
+            className="auth-input"
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) =>
+              setName(
+                e.target.value
+              )
+            }
+            required
+          />
+
+          <input
+            className="auth-input"
             type="email"
-            placeholder="Email"
+            placeholder="Email Address"
             value={email}
-            onChange={(
-              e
-            ) =>
+            onChange={(e) =>
               setEmail(
                 e.target.value
               )
             }
+            required
           />
 
           <input
+            className="auth-input"
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(
-              e
-            ) =>
+            onChange={(e) =>
               setPassword(
                 e.target.value
               )
             }
+            required
+          />
+
+          <input
+            className="auth-input"
+            type="password"
+            placeholder="Confirm Password"
+            value={
+              confirmPassword
+            }
+            onChange={(e) =>
+              setConfirmPassword(
+                e.target.value
+              )
+            }
+            required
           />
 
           <button
+            className="auth-btn"
             type="submit"
           >
             Create Account
@@ -94,8 +171,19 @@ const Register =
 
         </form>
 
+        <div className="auth-footer">
+          Already have an account?{" "}
+          <Link
+            className="auth-link"
+            to="/login"
+          >
+            Login
+          </Link>
+        </div>
+
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default Register;
